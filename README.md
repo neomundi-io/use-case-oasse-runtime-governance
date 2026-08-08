@@ -1,6 +1,6 @@
 # OASSE × NeoMundi
 
-**Runtime governance signaling and downstream policy enforcement — interoperability pilot.**
+**Runtime measurement, deterministic policy enforcement and evidence integrity — interoperability pilot.**
 
 [🇫🇷 Lire en français](#version-française)
 
@@ -10,102 +10,142 @@
 
 ## What happened here?
 
-A controlled benchmark of **60 runtime calls** was executed through the NeoMundi × OASSE integration.
+Oak & Sparrow Systems Enterprise (OASSE) integrated the NeoMundi runtime measurement layer into its pre-existing deterministic policy, action-control and evidence architecture.
 
-NeoMundi produced runtime governance signals in `OBS` wire mode. OASSE independently applied its own FAM policy. Gatekeeper then composed both layers into operational actions.
+The articulation was evaluated across **two controlled populations**:
 
-All **60 calls completed successfully**, all **60 Gatekeeper artifacts were sealed**, and all **60 NeoMundi trace IDs were reconciled one-to-one with the supplied NeoMundi audit export**.
+- a focused **60-request evidence benchmark**;
+- a broader **1,000-request controlled experiment**.
+
+NeoMundi measured runtime behavior. OASSE independently interpreted the available measurements under its declared policy. Gatekeeper produced the downstream operational action and sealed the resulting evidence.
+
+**In simple terms: NeoMundi measures. OASSE determines and enforces.**
 
 ### What this shows
 
-This pilot provides evidence that:
+The experiments provide evidence that:
 
-- a third-party governance infrastructure can consume NeoMundi runtime signals;
-- NeoMundi does not need to replace the partner's local policy engine;
-- a local policy can remain authoritative while consuming an independent runtime measurement layer;
-- NeoMundi signals and local verdicts can be deterministically composed into downstream operational actions;
-- traceability and evidence integrity can be preserved across both infrastructures.
+- an independent third-party infrastructure can consume NeoMundi runtime measurements;
+- the measurement layer can affect operational routing without becoming the authorization authority;
+- the partner can retain its own deterministic policy and enforcement logic;
+- measurement, interpretation, action and evidence can remain technically distinct and traceable;
+- the same articulation can operate across both a focused evidence run and a larger controlled population.
 
-**In simple terms: NeoMundi measures and signals. OASSE applies its own policy. Gatekeeper composes the operational action.**
-
-This is a completed focused interoperability benchmark. It is not, by itself, a claim of production readiness or universal interoperability.
+The results provide **one substantive indication in support of a common metrological layer for heterogeneous AI infrastructures**, while cross-architectural generality remains an open question requiring further comparison and replication.
 
 ---
 
 ## Overview
 
-This repository documents the **NeoMundi × OASSE 60-Pull Focused Benchmark**, executed on **4 August 2026**.
+This repository documents the NeoMundi × OASSE interoperability articulation and its associated evidence.
 
-The experiment tested a complete runtime governance path in which NeoMundi supplied an independent runtime signal while OASSE retained its own policy and enforcement authority.
+The experimental question was narrow:
 
-Reference run:
+> Can an independent runtime measurement layer be integrated into a deterministic policy and enforcement architecture while preserving a clear separation between measurement, interpretation and final action?
 
-`run-d86e7abe7d55`
+OASSE already possessed its own deterministic policy packs, rule evaluation, action-control logic, sealed evidence chain and benchmark runners before NeoMundi was integrated.
+
+NeoMundi did not create OASSE's policy authority, FAM determinations, Gatekeeper actions or evidence-chain mechanism.
+
+NeoMundi added an independent runtime measurement and traceability layer.
+
+---
 
 ## Architecture
 
-    Controlled case
+    Controlled request
           ↓
-    Runner / integration bridge
+    OASSE integration bridge
           ↓
-          ├───────────────┐
-          ↓               ↓
-    NeoMundi OBS       OASSE FAM
-    runtime signal     local policy verdict
-          ↓               ↓
-          └───────┬───────┘
-                  ↓
-              Gatekeeper
-                  ↓
-        PROCEED / HOLD / DENY
-                  ↓
-          sealed artifact
-                  ↓
-        trace reconciliation
+          ├────────────────────┐
+          ↓                    ↓
+    NeoMundi OBS            OASSE FAM
+    runtime measurement     deterministic policy
+          ↓                    ↓
+          └─────────┬──────────┘
+                    ↓
+                Gatekeeper
+                    ↓
+          PROCEED / HOLD / DENY
+                    ↓
+            sealed evidence
+                    ↓
+          trace / audit chain
 
-NeoMundi and OASSE therefore perform different functions.
+### Responsibility boundary
 
-**NeoMundi measures and reports runtime behavior.**
+**NeoMundi**
+→ measures runtime behavior and returns measurement-layer classifications, scores, trace identifiers and supporting evidence.
 
-**OASSE FAM applies the partner's local policy.**
+**OASSE FAM**
+→ evaluates the original request independently under declared local policy.
 
-**Gatekeeper composes the two layers into an operational action.**
+**Gatekeeper**
+→ composes the available results, produces the operational action and seals the evidence artifact.
 
-## Benchmark
+NeoMundi's `ALLOW` and `FLAG` values are treated here as **measurement-layer classifications**, not authorization decisions.
 
-- **Partner infrastructure:** OASSE / Oak & Sparrow Systems
-- **Measurement layer:** NeoMundi ControlTower
-- **Benchmark:** 60-Pull Focused Governance Benchmark
-- **Reference run:** `run-d86e7abe7d55`
+---
+
+## Integration path
+
+The validated integration path was:
+
+1. load a controlled request and its NeoMundi measurement payload;
+2. send the payload through the deployed NeoMundi `OBS` interface;
+3. preserve and normalize the NeoMundi response;
+4. convert selected measurements into versioned and traceable OASSE evidence facts;
+5. evaluate the original request independently through the OASSE FAM policy engine;
+6. select the strictest combined state;
+7. produce a Gatekeeper action of `PROCEED`, `HOLD` or `DENY`;
+8. seal the composite evidence artifact;
+9. append the artifact to the OASSE evidence chain.
+
+A runnable launcher and HTML console were subsequently packaged around this validated path.
+
+`OBS` is the deployed NeoMundi wire mode.
+
+`GOV` is the internal OASSE designation for the controlled governance scenario.
+
+---
+
+# Focused 60-request benchmark
+
+## Reference run
+
+`run-d86e7abe7d55`
+
+Date: **4 August 2026**
+
+### Execution
+
 - **Cases attempted:** 60
-- **Cases completed:** 60
+- **Cases completed successfully:** 60
 - **Gatekeeper artifacts sealed:** 60
 - **Technical failures:** 0
+- **NeoMundi trace IDs reconciled:** 60 / 60
+- **Distinct source-response hashes:** 60
 - **NeoMundi wire mode:** `OBS`
-- **Internal OASSE benchmark designation:** `GOV`
 
-The distinction between `OBS` and `GOV` is important:
+No transport, authentication, validation, timeout or runner failure was observed in the focused result set.
 
-- `OBS` is the authoritative NeoMundi wire-level mode used during the run;
-- `GOV` is OASSE's internal designation for the governance-path benchmark.
+## Outcomes
 
-## Results
+### NeoMundi measurement layer
 
-### NeoMundi runtime signals
-
-| Outcome | Count | Share |
+| Classification | Count | Share |
 |---|---:|---:|
 | `ALLOW` | 58 | 96.67% |
 | `FLAG` | 2 | 3.33% |
 
-### OASSE FAM local verdicts
+### OASSE FAM
 
-| Outcome | Count | Share |
+| Verdict | Count | Share |
 |---|---:|---:|
 | `ALLOW` | 50 | 83.33% |
 | `BLOCK` | 10 | 16.67% |
 
-### Gatekeeper final actions
+### Gatekeeper
 
 | Action | Count | Share |
 |---|---:|---:|
@@ -113,13 +153,11 @@ The distinction between `OBS` and `GOV` is important:
 | `DENY` | 10 | 16.67% |
 | `HOLD` | 2 | 3.33% |
 
-These distributions come from a deliberately controlled benchmark pack and must not be interpreted as production incident rates.
+These distributions come from an intentionally controlled benchmark pack and must not be interpreted as production incident rates.
 
-## Decision composition
+## Cross-layer composition
 
-The observed composition matrix was:
-
-| OASSE FAM verdict | NeoMundi signal | Gatekeeper action | Count |
+| OASSE FAM verdict | NeoMundi classification | Gatekeeper action | Count |
 |---|---|---|---:|
 | `BLOCK` | `ALLOW` | `DENY` | 10 |
 | `ALLOW` | `FLAG` | `HOLD` | 2 |
@@ -127,47 +165,35 @@ The observed composition matrix was:
 
 This demonstrates both directions of authority preservation:
 
-- a NeoMundi `ALLOW` does **not** override an OASSE `BLOCK`;
-- a NeoMundi `FLAG` can transform an otherwise admissible operation into `HOLD`.
+- a NeoMundi `ALLOW` did **not** override an OASSE `BLOCK`;
+- a NeoMundi `FLAG` moved two otherwise admissible requests to `HOLD`.
 
-The final operational action is therefore produced by the partner-side composition layer, not by NeoMundi alone.
+The measurement layer influenced operational routing without becoming the authorization authority.
+
+---
 
 ## Traceability and evidence integrity
 
-The focused benchmark recorded:
+The focused run preserved:
 
-- 60 / 60 successful result rows;
 - complete ordinals from 1 through 60;
 - complete artifact sequences from 1 through 60;
-- a continuous outer previous-hash chain;
-- FAM previous-hash fields consistent with the enclosing Gatekeeper chain;
+- continuous outer previous-hash chaining;
+- agreement between FAM previous-hash fields and Gatekeeper artifacts;
 - unique NeoMundi trace IDs;
 - unique source-response hashes;
-- 60 / 60 NeoMundi trace IDs reconciled against the audit export;
-- matching audit decisions and sealed facts;
-- matching G-Scores between audit records and sealed facts;
+- 60 / 60 direct trace reconciliation against NeoMundi audit records;
+- agreement between matched audit decisions and sealed facts;
+- agreement between matched audit G-Scores and sealed facts;
 - stable bridge implementation digest;
 - stable measurement version;
 - stable runner version.
 
-The evidence package therefore supports re-validation of the focused run from both the OASSE result set and the NeoMundi audit export.
+The focused evidence package therefore supports case-level re-validation and reconciliation between OASSE artifacts and NeoMundi audit evidence.
 
-## Runtime score summary
+---
 
-Observed NeoMundi scores across the 60 sealed responses:
-
-| Score | Mean | Median | P95 | Minimum | Maximum |
-|---|---:|---:|---:|---:|---:|
-| G-Score | 0.5933 | 0.6000 | 0.6000 | 0.4000 | 0.6000 |
-| G-Final | 0.9852 | 0.9885 | 0.9885 | 0.8898 | 0.9885 |
-| V-Score | 0.9667 | 1.0000 | 1.0000 | 0.0000 | 1.0000 |
-| Stability | 0.9128 | 0.9231 | 0.9231 | 0.6154 | 0.9231 |
-
-These values are runtime measurements associated with this benchmark. They are not universal verdicts or production incident rates.
-
-## Timing
-
-Observed timing for the successful path:
+## Focused-run performance
 
 | Metric | Mean | Median | P95 | P99 | Maximum |
 |---|---:|---:|---:|---:|---:|
@@ -175,79 +201,189 @@ Observed timing for the successful path:
 | NeoMundi processing | 20024.02 ms | 20024.54 ms | 20031.75 ms | 20033.56 ms | 20033.60 ms |
 | OASSE + transport residual | 311.74 ms | 299.72 ms | 366.73 ms | 539.07 ms | 776.39 ms |
 
-The measured window lasted **20.34 minutes**, corresponding to an effective throughput of **177.01 sealed artifacts per hour**.
+- **Measured window:** 20.34 minutes
+- **Effective throughput:** 177.01 sealed artifacts/hour
 
-The OASSE + transport value is a residual measurement. It may include network transit, serialization, bridge normalization, policy evaluation, sealing, persistence and client overhead.
+The OASSE + transport value is a residual measurement, not an isolated processor timer.
 
-## Responsibility separation
+---
 
-| Layer | Responsibility |
-|---|---|
-| NeoMundi | Runtime measurement, scoring, signaling and audit trace |
-| OASSE FAM | Independent local policy evaluation |
-| Gatekeeper | Deterministic composition and operational action |
-| Partner environment | Final operational authority and execution |
+# Controlled 1,000-request experiment
 
-The core architectural rule is:
+The broader controlled experiment extended the same articulation to **1,000 attempted calls**.
 
-> **NeoMundi does not replace the business or operational authority of the integrated system. NeoMundi provides an independent runtime measurement and signaling layer consumable by that authority.**
+### Execution
 
-## What this pilot establishes — and does not establish
+- **NeoMundi measurements recorded:** 1,000 / 1,000
+- **OASSE artifacts sealed:** 996
+- **Local response timeouts:** 4
+- **Local sealing rate:** 99.6%
 
-### It establishes, within this benchmark
+The four timed-out calls remained visible in the attempted population and were preserved as reliability evidence rather than rewritten as successes.
 
-- successful end-to-end execution of the focused 60-call pipeline;
-- consumption of NeoMundi runtime signals by OASSE;
-- preservation of independent local policy authority;
-- deterministic cross-layer decision composition;
-- one-to-one trace reconciliation with NeoMundi audit records;
-- continuity and integrity of the sealed evidence chain;
-- stable bridge, runner and measurement versions across the focused run.
+## Outcomes
+
+### NeoMundi measurement layer
+
+| Classification | Count / base |
+|---|---:|
+| `ALLOW` | 253 / 1,000 |
+| `FLAG` | 747 / 1,000 |
+
+### OASSE FAM
+
+| Verdict | Count / base |
+|---|---:|
+| `ABSTAIN` | 115 / 996 |
+| `ALLOW` | 232 / 996 |
+| `BLOCK` | 440 / 996 |
+| `REVIEW` | 209 / 996 |
+
+### Gatekeeper
+
+| Action | Count / base |
+|---|---:|
+| `PROCEED` | 47 / 996 |
+| `HOLD` | 509 / 996 |
+| `DENY` | 440 / 996 |
+
+These controlled distributions are experimental populations and must not be interpreted as production incident rates.
+
+---
+
+## 1,000-request performance
+
+| Metric | Observed result |
+|---|---:|
+| Average full-pipeline duration | 20.414 s |
+| Average NeoMundi processing time | 20.023 s |
+| Average OASSE + transport residual | 390.77 ms |
+| Median residual | 381.79 ms |
+| P95 residual | 482.00 ms |
+| P99 residual | 701.57 ms |
+| Maximum residual | 907.09 ms |
+| Effective throughput | 174.26 sealed artifacts/hour |
+
+For the 996 successfully sealed actions, the narrower post-FAM Gatekeeper finalization stage completed below **250 ms in every case**, with a maximum reported finalization time of **1.9541 ms**.
+
+---
+
+## Operational value observed
+
+The main operational value was a complete and separable path showing:
+
+- what NeoMundi measured;
+- what OASSE policy determined;
+- what Gatekeeper did;
+- which evidence supported each stage;
+- how long the measured boundaries required.
+
+The articulation therefore demonstrated a functioning:
+
+**measurement → policy → action → evidence**
+
+pipeline with independent runtime measurement, deterministic interpretation, operational routing, traceable provenance, case-level audit reconstruction and chained evidence integrity.
+
+---
+
+## What NeoMundi added
+
+OASSE already had:
+
+- deterministic policy determination;
+- action selection;
+- sealing;
+- evidence persistence;
+- policy and statutory provenance;
+- controlled runners.
+
+NeoMundi added:
+
+- independent runtime behavioral measurement;
+- runtime measurement-layer classifications;
+- measurement scores;
+- trace identifiers;
+- measurement and normalizer versions;
+- confidence values;
+- G-Score;
+- G-Final;
+- V-Score;
+- Stability;
+- processing-time information;
+- source-response digests;
+- raw response evidence where returned.
+
+OASSE therefore classifies the NeoMundi contribution as **complementary and operationally distinct**.
+
+---
+
+## What this case establishes — and does not establish
+
+### It establishes within these controlled experiments
+
+- successful integration of NeoMundi measurements into an existing third-party governance architecture;
+- preservation of independent OASSE policy authority;
+- deterministic downstream action composition;
+- runtime measurement affecting routing without becoming authorization;
+- traceable and reconstructable evidence across both infrastructures;
+- successful execution of a focused 60-request evidence benchmark;
+- extension of the articulation to a controlled 1,000-request population.
 
 ### It does not establish
 
+- universal interoperability across heterogeneous architectures;
 - production readiness on its own;
-- universal interoperability across all third-party systems;
-- universal policy semantics;
-- universal performance or incident rates;
+- universal decision relevance of every NeoMundi measurement;
+- independent external ground truth for every behavioral measurement;
+- universal incident rates or universal performance;
 - legal or regulatory compliance;
-- native NeoMundi enforcement of `PROCEED`, `HOLD` or `DENY`;
-- production-scale resilience, security, SLA or continuous monitoring.
+- native NeoMundi enforcement of partner actions;
+- resilience, security, SLA or continuous-monitoring performance at production scale.
 
-## Interpretation boundary
+---
 
-NeoMundi operated in `OBS` mode throughout the benchmark.
+## Research interpretation
 
-OASSE applied downstream enforcement through its own policy and Gatekeeper layers.
+The OASSE research contribution treats this articulation as **one substantive indication in support of a common metrological layer for heterogeneous AI infrastructures**.
 
-The benchmark therefore demonstrates **runtime governance signaling with downstream partner enforcement**, not native NeoMundi enforcement.
+The evidence supports complementary operational value in routing, traceability, auditability and evidence quality.
 
-## Repository purpose
+The stronger claim — that the same metrological layer generalizes across very different external architectures — remains an open comparative question requiring additional independent articulations and replication.
 
-This repository is intended to make the interoperability pilot inspectable and citable.
+---
 
-It should preserve the distinction between:
+## Documentation
 
-1. runtime measurement;
-2. local policy interpretation;
-3. operational enforcement;
-4. evidence and audit.
+This repository should preserve two distinct reference documents:
 
-The repository does not need to expose NeoMundi's proprietary internal measurement mechanisms in order to document the observed interoperability.
+### Focused benchmark report
 
-## Supporting report
+`OASSE_NeoMundi_60_Pull_Benchmark_2026-08-04.pdf`
 
-The benchmark report documents:
+Documents:
 
-- execution results;
+- the 60-request focused live benchmark;
 - timing;
-- governance outcomes;
-- cross-gate composition;
-- NeoMundi score summaries;
-- evidence integrity;
+- cross-layer outcomes;
 - trace reconciliation;
-- source manifest;
-- reproducibility boundaries.
+- evidence-chain integrity;
+- source manifest and verification method.
+
+### Research contribution
+
+`NeoMundi_Oak_Sparrow_Common_Metrological_Layer_Research.pdf`
+
+Documents:
+
+- the pre-existing OASSE architecture;
+- the NeoMundi integration method;
+- the 60-request experiment;
+- the controlled 1,000-request experiment;
+- operational value;
+- limitations;
+- the contribution to the common-metrological-layer research question.
+
+---
 
 ## NeoMundi resources
 
@@ -256,13 +392,15 @@ The benchmark report documents:
 - [Runtime Interoperability Contract](https://github.com/neomundi-io/runtime-interoperability-contract)
 - [NeoMundi AI Observatory](https://github.com/neomundi-io/neomundi-ai-observatory)
 
+---
+
 ## Status
 
-**Focused interoperability benchmark completed and technically validated for the pilot phase.**
+**Interoperability articulation completed and technically validated for the controlled pilot phase.**
 
-The run demonstrates that OASSE can preserve independent policy and operational authority while consuming NeoMundi runtime signals through a traceable and auditable integration.
+The evidence shows that OASSE can retain independent deterministic policy and operational authority while consuming NeoMundi runtime measurements through a traceable and auditable integration.
 
-Further validation is required before any broader claim of production readiness or universal interoperability.
+Further cross-architectural replication is required before broader generalisation.
 
 ---
 
@@ -272,102 +410,142 @@ Further validation is required before any broader claim of production readiness 
 
 ## Qu’est-ce qui a été fait ici ?
 
-Un benchmark contrôlé de **60 appels runtime** a été exécuté au travers de l’intégration NeoMundi × OASSE.
+Oak & Sparrow Systems Enterprise (OASSE) a intégré la couche de mesure runtime NeoMundi dans son architecture préexistante de politique déterministe, de contrôle d’action et de preuve.
 
-NeoMundi a produit des signaux de gouvernance runtime en mode wire `OBS`. OASSE a appliqué indépendamment sa propre politique FAM. Gatekeeper a ensuite composé les deux couches pour produire des actions opérationnelles.
+L’articulation a été évaluée sur **deux populations contrôlées** :
 
-Les **60 appels ont été exécutés avec succès**, les **60 artefacts Gatekeeper ont été scellés**, et les **60 identifiants de trace NeoMundi ont été réconciliés un à un avec l’export d’audit NeoMundi fourni**.
+- un benchmark ciblé de **60 requêtes**, centré sur la preuve ;
+- une expérience contrôlée élargie de **1 000 requêtes**.
+
+NeoMundi a mesuré le comportement runtime. OASSE a interprété indépendamment les mesures disponibles sous sa politique déclarée. Gatekeeper a produit l’action opérationnelle en aval et scellé la preuve correspondante.
+
+**En termes simples : NeoMundi mesure. OASSE détermine et applique.**
 
 ### Ce que cela montre
 
-Ce pilote apporte des éléments montrant que :
+Les expériences apportent des éléments montrant que :
 
-- une infrastructure tierce de gouvernance peut consommer les signaux runtime NeoMundi ;
-- NeoMundi n’a pas besoin de remplacer le moteur de politique locale du partenaire ;
-- une politique locale peut rester souveraine tout en consommant une couche indépendante de mesure runtime ;
-- les signaux NeoMundi et les verdicts locaux peuvent être composés de manière déterministe en actions opérationnelles ;
-- la traçabilité et l’intégrité des preuves peuvent être conservées entre les deux infrastructures.
+- une infrastructure tierce indépendante peut consommer les mesures runtime NeoMundi ;
+- la couche de mesure peut influencer le routage opérationnel sans devenir l’autorité d’autorisation ;
+- le partenaire peut conserver sa propre politique déterministe et sa logique d’enforcement ;
+- mesure, interprétation, action et preuve peuvent rester techniquement distinctes et traçables ;
+- la même articulation peut fonctionner sur un run de preuve ciblé puis sur une population contrôlée plus large.
 
-**En termes simples : NeoMundi mesure et signale. OASSE applique sa propre politique. Gatekeeper compose l’action opérationnelle.**
-
-Il s’agit d’un benchmark d’interopérabilité ciblé terminé. Il ne constitue pas, à lui seul, une démonstration de préparation à la production ni d’interopérabilité universelle.
+Les résultats constituent **une indication substantielle en faveur d’une couche métrologique commune pour des infrastructures IA hétérogènes**, tandis que la généralité inter-architectures reste une question ouverte nécessitant comparaison et réplication.
 
 ---
 
 ## Vue d’ensemble
 
-Ce dépôt documente le **benchmark ciblé NeoMundi × OASSE de 60 appels**, exécuté le **4 août 2026**.
+Ce dépôt documente l’articulation d’interopérabilité NeoMundi × OASSE et les preuves associées.
 
-L’expérience a testé une chaîne complète de gouvernance runtime dans laquelle NeoMundi fournissait un signal runtime indépendant tandis qu’OASSE conservait sa propre politique et son autorité d’enforcement.
+La question expérimentale était volontairement étroite :
 
-Run de référence :
+> Une couche indépendante de mesure runtime peut-elle être intégrée à une architecture déterministe de politique et d’enforcement tout en maintenant une séparation claire entre mesure, interprétation et action finale ?
 
-`run-d86e7abe7d55`
+Avant NeoMundi, OASSE disposait déjà de ses propres policy packs déterministes, de son moteur de règles, de sa logique de contrôle d’action, de sa chaîne de preuve scellée et de ses runners de benchmark.
+
+NeoMundi n’a créé ni l’autorité de politique OASSE, ni les déterminations FAM, ni les actions Gatekeeper, ni le mécanisme de chaîne de preuve.
+
+NeoMundi a ajouté une couche indépendante de mesure runtime et de traçabilité.
+
+---
 
 ## Architecture
 
-    Cas contrôlé
+    Requête contrôlée
           ↓
-    Runner / bridge d’intégration
+    Bridge d’intégration OASSE
           ↓
-          ├───────────────┐
-          ↓               ↓
-    NeoMundi OBS       OASSE FAM
-    signal runtime     verdict de politique locale
-          ↓               ↓
-          └───────┬───────┘
-                  ↓
-              Gatekeeper
-                  ↓
-        PROCEED / HOLD / DENY
-                  ↓
-          artefact scellé
-                  ↓
-       réconciliation des traces
+          ├────────────────────┐
+          ↓                    ↓
+    NeoMundi OBS            OASSE FAM
+    mesure runtime          politique déterministe
+          ↓                    ↓
+          └─────────┬──────────┘
+                    ↓
+                Gatekeeper
+                    ↓
+          PROCEED / HOLD / DENY
+                    ↓
+             preuve scellée
+                    ↓
+          chaîne trace / audit
 
-NeoMundi et OASSE remplissent donc des fonctions différentes.
+### Frontière des responsabilités
 
-**NeoMundi mesure et rapporte le comportement runtime.**
+**NeoMundi**
+→ mesure le comportement runtime et retourne des classifications de couche de mesure, des scores, des identifiants de trace et les éléments de preuve associés.
 
-**OASSE FAM applique la politique locale du partenaire.**
+**OASSE FAM**
+→ évalue indépendamment la requête initiale sous la politique locale déclarée.
 
-**Gatekeeper compose les deux couches pour produire une action opérationnelle.**
+**Gatekeeper**
+→ compose les résultats disponibles, produit l’action opérationnelle et scelle l’artefact de preuve.
 
-## Benchmark
+Les valeurs NeoMundi `ALLOW` et `FLAG` sont traitées ici comme des **classifications de couche de mesure**, et non comme des décisions d’autorisation.
 
-- **Infrastructure partenaire :** OASSE / Oak & Sparrow Systems
-- **Couche de mesure :** NeoMundi ControlTower
-- **Benchmark :** 60-Pull Focused Governance Benchmark
-- **Run de référence :** `run-d86e7abe7d55`
+---
+
+## Chemin d’intégration
+
+Le chemin validé était :
+
+1. charger une requête contrôlée et son payload de mesure NeoMundi ;
+2. envoyer le payload via l’interface NeoMundi `OBS` déployée ;
+3. préserver et normaliser la réponse NeoMundi ;
+4. convertir certaines mesures en faits de preuve OASSE versionnés et traçables ;
+5. évaluer indépendamment la requête initiale via le moteur de politique OASSE FAM ;
+6. sélectionner l’état combiné le plus strict ;
+7. produire une action Gatekeeper `PROCEED`, `HOLD` ou `DENY` ;
+8. sceller l’artefact composite de preuve ;
+9. ajouter l’artefact à la chaîne de preuve OASSE.
+
+Un launcher exécutable et une console HTML ont ensuite été packagés autour de ce chemin validé.
+
+`OBS` est le mode wire NeoMundi effectivement déployé.
+
+`GOV` reste la désignation interne OASSE du scénario de gouvernance contrôlé.
+
+---
+
+# Benchmark ciblé de 60 requêtes
+
+## Run de référence
+
+`run-d86e7abe7d55`
+
+Date : **4 août 2026**
+
+### Exécution
+
 - **Cas tentés :** 60
-- **Cas terminés :** 60
+- **Cas terminés avec succès :** 60
 - **Artefacts Gatekeeper scellés :** 60
 - **Échecs techniques :** 0
+- **Trace IDs NeoMundi réconciliés :** 60 / 60
+- **Hashes de réponses source distincts :** 60
 - **Mode wire NeoMundi :** `OBS`
-- **Désignation interne OASSE :** `GOV`
 
-La distinction entre `OBS` et `GOV` est importante :
-
-- `OBS` est le mode wire NeoMundi effectivement utilisé pendant le run ;
-- `GOV` est la désignation interne OASSE du benchmark de gouvernance.
+Aucun échec de transport, d’authentification, de validation, de timeout ou de runner n’a été observé dans le résultat ciblé.
 
 ## Résultats
 
-### Signaux runtime NeoMundi
+### Couche de mesure NeoMundi
 
-| Résultat | Nombre | Part |
+| Classification | Nombre | Part |
 |---|---:|---:|
 | `ALLOW` | 58 | 96,67 % |
 | `FLAG` | 2 | 3,33 % |
 
-### Verdicts locaux OASSE FAM
+### OASSE FAM
 
-| Résultat | Nombre | Part |
+| Verdict | Nombre | Part |
 |---|---:|---:|
 | `ALLOW` | 50 | 83,33 % |
 | `BLOCK` | 10 | 16,67 % |
 
-### Actions finales Gatekeeper
+### Gatekeeper
 
 | Action | Nombre | Part |
 |---|---:|---:|
@@ -377,59 +555,45 @@ La distinction entre `OBS` et `GOV` est importante :
 
 Ces distributions proviennent d’un benchmark volontairement contrôlé et ne doivent pas être interprétées comme des taux d’incident en production.
 
-## Composition des décisions
+## Composition inter-couches
 
-La matrice observée est la suivante :
-
-| Verdict OASSE FAM | Signal NeoMundi | Action Gatekeeper | Nombre |
+| Verdict OASSE FAM | Classification NeoMundi | Action Gatekeeper | Nombre |
 |---|---|---|---:|
 | `BLOCK` | `ALLOW` | `DENY` | 10 |
 | `ALLOW` | `FLAG` | `HOLD` | 2 |
 | `ALLOW` | `ALLOW` | `PROCEED` | 48 |
 
-Cette matrice démontre les deux directions de conservation de l’autorité :
+Cela démontre les deux directions de conservation de l’autorité :
 
-- un `ALLOW` NeoMundi ne neutralise **pas** un `BLOCK` OASSE ;
-- un `FLAG` NeoMundi peut transformer une opération autrement admissible en `HOLD`.
+- un `ALLOW` NeoMundi n’a **pas** neutralisé un `BLOCK` OASSE ;
+- un `FLAG` NeoMundi a déplacé deux requêtes autrement admissibles vers `HOLD`.
 
-L’action opérationnelle finale est donc produite par la couche de composition du partenaire, et non par NeoMundi seul.
+La couche de mesure a donc influencé le routage opérationnel sans devenir l’autorité d’autorisation.
+
+---
 
 ## Traçabilité et intégrité des preuves
 
-Le benchmark ciblé a enregistré :
+Le run ciblé a conservé :
 
-- 60 / 60 lignes de résultats avec statut succès ;
 - des ordinals complets de 1 à 60 ;
 - des séquences d’artefacts complètes de 1 à 60 ;
 - une chaîne externe `previous-hash` continue ;
-- des champs `previous-hash` FAM cohérents avec la chaîne Gatekeeper ;
-- des identifiants de trace NeoMundi uniques ;
+- une concordance des champs `previous-hash` FAM avec les artefacts Gatekeeper ;
+- des trace IDs NeoMundi uniques ;
 - des hashes de réponse source uniques ;
-- 60 / 60 trace IDs NeoMundi réconciliés avec l’export d’audit ;
-- une concordance des décisions d’audit avec les faits scellés ;
-- une concordance des G-Scores entre audit et faits scellés ;
+- une réconciliation directe de 60 / 60 traces avec les enregistrements d’audit NeoMundi ;
+- une concordance entre les décisions d’audit et les faits scellés ;
+- une concordance entre les G-Scores d’audit et les faits scellés ;
 - un digest stable de l’implémentation du bridge ;
 - une version de mesure stable ;
-- une version du runner stable.
+- une version de runner stable.
 
-Le package de preuve permet donc une revalidation du run ciblé à partir des résultats OASSE et de l’export d’audit NeoMundi.
+Le package de preuve ciblé permet donc une revalidation au niveau de chaque cas entre les artefacts OASSE et les preuves d’audit NeoMundi.
 
-## Résumé des scores runtime
+---
 
-Scores NeoMundi observés sur les 60 réponses scellées :
-
-| Score | Moyenne | Médiane | P95 | Minimum | Maximum |
-|---|---:|---:|---:|---:|---:|
-| G-Score | 0,5933 | 0,6000 | 0,6000 | 0,4000 | 0,6000 |
-| G-Final | 0,9852 | 0,9885 | 0,9885 | 0,8898 | 0,9885 |
-| V-Score | 0,9667 | 1,0000 | 1,0000 | 0,0000 | 1,0000 |
-| Stability | 0,9128 | 0,9231 | 0,9231 | 0,6154 | 0,9231 |
-
-Ces valeurs sont des mesures runtime associées à ce benchmark. Elles ne constituent ni des verdicts universels ni des taux d’incident en production.
-
-## Temps d’exécution
-
-Temps observés sur le chemin réussi :
+## Performance du run ciblé
 
 | Métrique | Moyenne | Médiane | P95 | P99 | Maximum |
 |---|---:|---:|---:|---:|---:|
@@ -437,79 +601,189 @@ Temps observés sur le chemin réussi :
 | Traitement NeoMundi | 20024,02 ms | 20024,54 ms | 20031,75 ms | 20033,56 ms | 20033,60 ms |
 | Résiduel OASSE + transport | 311,74 ms | 299,72 ms | 366,73 ms | 539,07 ms | 776,39 ms |
 
-La fenêtre mesurée a duré **20,34 minutes**, soit un débit effectif de **177,01 artefacts scellés par heure**.
+- **Fenêtre mesurée :** 20,34 minutes
+- **Débit effectif :** 177,01 artefacts scellés/heure
 
-La valeur OASSE + transport est un résiduel. Elle peut inclure le transit réseau, la sérialisation, la normalisation du bridge, l’évaluation de la politique, le scellement, la persistance et l’overhead client.
+La valeur OASSE + transport est une mesure résiduelle, et non un chronométrage isolé du moteur partenaire.
 
-## Séparation des responsabilités
+---
 
-| Couche | Responsabilité |
-|---|---|
-| NeoMundi | Mesure runtime, scoring, signalement et trace d’audit |
-| OASSE FAM | Évaluation indépendante de la politique locale |
-| Gatekeeper | Composition déterministe et action opérationnelle |
-| Environnement partenaire | Autorité opérationnelle finale et exécution |
+# Expérience contrôlée de 1 000 requêtes
 
-La règle architecturale centrale est :
+L’expérience élargie a étendu la même articulation à **1 000 appels tentés**.
 
-> **NeoMundi ne remplace pas l’autorité métier ou opérationnelle du système intégré. NeoMundi fournit une couche indépendante de mesure et de signalement runtime, consommable par cette autorité.**
+### Exécution
 
-## Ce que ce pilote établit — et n’établit pas
+- **Mesures NeoMundi enregistrées :** 1 000 / 1 000
+- **Artefacts OASSE scellés :** 996
+- **Timeouts locaux :** 4
+- **Taux local de scellement :** 99,6 %
 
-### Il établit, dans le périmètre du benchmark
+Les quatre appels en timeout sont restés visibles dans la population tentée et ont été conservés comme preuve de fiabilité plutôt que réécrits comme des succès.
 
-- l’exécution réussie de bout en bout du pipeline ciblé de 60 appels ;
-- la consommation des signaux runtime NeoMundi par OASSE ;
-- la conservation d’une autorité de politique locale indépendante ;
-- une composition déterministe des décisions entre couches ;
-- une réconciliation un à un des traces avec les enregistrements d’audit NeoMundi ;
-- la continuité et l’intégrité de la chaîne de preuves scellées ;
-- la stabilité des versions du bridge, du runner et de la mesure pendant le run ciblé.
+## Résultats
+
+### Couche de mesure NeoMundi
+
+| Classification | Nombre / base |
+|---|---:|
+| `ALLOW` | 253 / 1 000 |
+| `FLAG` | 747 / 1 000 |
+
+### OASSE FAM
+
+| Verdict | Nombre / base |
+|---|---:|
+| `ABSTAIN` | 115 / 996 |
+| `ALLOW` | 232 / 996 |
+| `BLOCK` | 440 / 996 |
+| `REVIEW` | 209 / 996 |
+
+### Gatekeeper
+
+| Action | Nombre / base |
+|---|---:|
+| `PROCEED` | 47 / 996 |
+| `HOLD` | 509 / 996 |
+| `DENY` | 440 / 996 |
+
+Ces distributions contrôlées sont expérimentales et ne doivent pas être interprétées comme des taux d’incident en production.
+
+---
+
+## Performance sur 1 000 requêtes
+
+| Métrique | Résultat observé |
+|---|---:|
+| Durée moyenne pipeline complet | 20,414 s |
+| Temps moyen NeoMundi | 20,023 s |
+| Résiduel moyen OASSE + transport | 390,77 ms |
+| Résiduel médian | 381,79 ms |
+| P95 résiduel | 482,00 ms |
+| P99 résiduel | 701,57 ms |
+| Résiduel maximum | 907,09 ms |
+| Débit effectif | 174,26 artefacts scellés/heure |
+
+Pour les 996 actions scellées avec succès, l’étape plus étroite de finalisation Gatekeeper post-FAM est restée sous **250 ms dans tous les cas**, avec un maximum rapporté de **1,9541 ms**.
+
+---
+
+## Valeur opérationnelle observée
+
+La principale valeur opérationnelle observée est un chemin complet et séparable permettant d’identifier :
+
+- ce que NeoMundi a mesuré ;
+- ce que la politique OASSE a déterminé ;
+- ce que Gatekeeper a fait ;
+- quelles preuves soutenaient chaque étape ;
+- combien de temps chaque frontière mesurée a nécessité.
+
+L’articulation démontre donc un pipeline fonctionnel :
+
+**mesure → politique → action → preuve**
+
+avec mesure runtime indépendante, interprétation déterministe, routage opérationnel, provenance traçable, reconstruction d’audit au niveau des cas et intégrité d’une chaîne de preuve.
+
+---
+
+## Ce que NeoMundi a ajouté
+
+OASSE disposait déjà de :
+
+- la détermination de politique ;
+- la sélection d’action ;
+- le scellement ;
+- la persistance de preuve ;
+- la provenance politique et statutaire ;
+- des runners contrôlés.
+
+NeoMundi a ajouté :
+
+- une mesure comportementale runtime indépendante ;
+- des classifications de couche de mesure ;
+- des scores de mesure ;
+- des identifiants de trace ;
+- des versions de mesure et de normalisation ;
+- des valeurs de confiance ;
+- G-Score ;
+- G-Final ;
+- V-Score ;
+- Stability ;
+- des informations de temps de traitement ;
+- des digests de réponse source ;
+- les éléments de réponse brute lorsqu’ils étaient retournés.
+
+OASSE classe donc la contribution NeoMundi comme **complémentaire et opérationnellement distincte**.
+
+---
+
+## Ce que ce cas établit — et n’établit pas
+
+### Il établit dans le périmètre de ces expériences contrôlées
+
+- l’intégration réussie des mesures NeoMundi dans une architecture tierce existante ;
+- la conservation d’une autorité de politique OASSE indépendante ;
+- une composition déterministe des actions en aval ;
+- une mesure runtime pouvant influencer le routage sans devenir l’autorité d’autorisation ;
+- des preuves traçables et reconstructibles entre les deux infrastructures ;
+- l’exécution réussie d’un benchmark de preuve ciblé de 60 requêtes ;
+- l’extension de l’articulation à une population contrôlée de 1 000 requêtes.
 
 ### Il n’établit pas
 
+- une interopérabilité universelle entre architectures hétérogènes ;
 - une préparation à la production à lui seul ;
-- une interopérabilité universelle entre tous les systèmes tiers ;
-- une sémantique de politique universelle ;
-- des performances ou taux d’incident universels ;
+- la pertinence décisionnelle universelle de chaque mesure NeoMundi ;
+- une vérité terrain externe indépendante pour chaque mesure comportementale ;
+- des taux d’incident ou performances universels ;
 - une conformité juridique ou réglementaire ;
-- un enforcement natif NeoMundi de `PROCEED`, `HOLD` ou `DENY` ;
+- un enforcement natif NeoMundi des actions du partenaire ;
 - la résilience, la sécurité, les SLA ou le monitoring continu à l’échelle de production.
 
-## Frontière d’interprétation
+---
 
-NeoMundi a fonctionné en mode `OBS` pendant tout le benchmark.
+## Interprétation scientifique
 
-OASSE a appliqué l’enforcement en aval au travers de ses propres couches FAM et Gatekeeper.
+La contribution de recherche OASSE présente cette articulation comme **une indication substantielle en faveur d’une couche métrologique commune pour des infrastructures IA hétérogènes**.
 
-Le benchmark démontre donc **un signalement de gouvernance runtime avec enforcement partenaire en aval**, et non un enforcement natif NeoMundi.
+Les éléments observés soutiennent une valeur opérationnelle complémentaire en matière de routage, traçabilité, auditabilité et qualité de preuve.
 
-## Objet du dépôt
+La revendication plus forte — selon laquelle une même couche métrologique se généralise à des architectures externes très différentes — reste une question comparative ouverte qui nécessite d’autres articulations indépendantes et des réplications.
 
-Ce dépôt vise à rendre le pilote d’interopérabilité inspectable et citable.
+---
 
-Il doit préserver la distinction entre :
+## Documentation
 
-1. mesure runtime ;
-2. interprétation par la politique locale ;
-3. enforcement opérationnel ;
-4. preuve et audit.
+Ce dépôt doit conserver deux documents de référence distincts.
 
-Le dépôt n’a pas besoin d’exposer les mécanismes internes propriétaires de mesure NeoMundi pour documenter l’interopérabilité observée.
+### Rapport du benchmark ciblé
 
-## Rapport de référence
+`OASSE_NeoMundi_60_Pull_Benchmark_2026-08-04.pdf`
 
-Le rapport du benchmark documente notamment :
+Documente :
 
-- les résultats d’exécution ;
-- les temps d’exécution ;
-- les résultats de gouvernance ;
-- la composition cross-gate ;
-- les scores NeoMundi ;
-- l’intégrité des preuves ;
+- le benchmark live ciblé de 60 requêtes ;
+- les performances ;
+- les résultats inter-couches ;
 - la réconciliation des traces ;
-- le manifeste des sources ;
-- les limites de reproductibilité et d’interprétation.
+- l’intégrité de la chaîne de preuve ;
+- le manifeste des sources et la méthode de vérification.
+
+### Contribution de recherche
+
+`NeoMundi_Oak_Sparrow_Common_Metrological_Layer_Research.pdf`
+
+Documente :
+
+- l’architecture OASSE préexistante ;
+- la méthode d’intégration NeoMundi ;
+- l’expérience de 60 requêtes ;
+- l’expérience contrôlée de 1 000 requêtes ;
+- la valeur opérationnelle observée ;
+- les limites ;
+- la contribution à la question de recherche sur une couche métrologique commune.
+
+---
 
 ## Ressources NeoMundi
 
@@ -518,10 +792,12 @@ Le rapport du benchmark documente notamment :
 - [Runtime Interoperability Contract](https://github.com/neomundi-io/runtime-interoperability-contract)
 - [NeoMundi AI Observatory](https://github.com/neomundi-io/neomundi-ai-observatory)
 
+---
+
 ## Statut
 
-**Benchmark d’interopérabilité ciblé terminé et techniquement validé pour la phase pilote.**
+**Articulation d’interopérabilité terminée et techniquement validée pour la phase pilote contrôlée.**
 
-Le run montre qu’OASSE peut conserver une politique et une autorité opérationnelle indépendantes tout en consommant les signaux runtime NeoMundi au travers d’une intégration traçable et auditable.
+Les éléments disponibles montrent qu’OASSE peut conserver une politique déterministe et une autorité opérationnelle indépendantes tout en consommant les mesures runtime NeoMundi au travers d’une intégration traçable et auditable.
 
-Des validations supplémentaires sont nécessaires avant toute affirmation plus large concernant la préparation à la production ou l’interopérabilité universelle.
+Des réplications inter-architectures supplémentaires sont nécessaires avant toute généralisation plus large.
