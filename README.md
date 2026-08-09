@@ -385,7 +385,13 @@ Documents:
 
 ---
 
-## NeoMundi resources
+## Ressources
+
+### Oak & Sparrow Systems Enterprise
+
+- [Oak & Sparrow Systems Enterprise](https://oakandsparrowsystemsenterprise.io/)
+
+### NeoMundi
 
 - [NeoMundi Research](https://neomundi.org)
 - [ControlTower](https://controltower.neomundi.io/welcome)
@@ -785,7 +791,13 @@ Documente :
 
 ---
 
-## Ressources NeoMundi
+## Ressources
+
+### Oak & Sparrow Systems Enterprise
+
+- [Oak & Sparrow Systems Enterprise](https://oakandsparrowsystemsenterprise.io/)
+
+### NeoMundi
 
 - [NeoMundi Research](https://neomundi.org)
 - [ControlTower](https://controltower.neomundi.io/welcome)
