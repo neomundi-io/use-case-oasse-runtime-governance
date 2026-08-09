@@ -385,6 +385,16 @@ Documents:
 
 ---
 
+## Status
+
+**Interoperability articulation completed and technically validated for the controlled pilot phase.**
+
+The evidence shows that OASSE can retain independent deterministic policy and operational authority while consuming NeoMundi runtime measurements through a traceable and auditable integration.
+
+Further cross-architectural replication is required before broader generalisation.
+
+---
+
 ## Ressources
 
 ### Oak & Sparrow Systems Enterprise
@@ -397,16 +407,6 @@ Documents:
 - [ControlTower](https://controltower.neomundi.io/welcome)
 - [Runtime Interoperability Contract](https://github.com/neomundi-io/runtime-interoperability-contract)
 - [NeoMundi AI Observatory](https://github.com/neomundi-io/neomundi-ai-observatory)
-
----
-
-## Status
-
-**Interoperability articulation completed and technically validated for the controlled pilot phase.**
-
-The evidence shows that OASSE can retain independent deterministic policy and operational authority while consuming NeoMundi runtime measurements through a traceable and auditable integration.
-
-Further cross-architectural replication is required before broader generalisation.
 
 ---
 
@@ -791,6 +791,16 @@ Documente :
 
 ---
 
+## Statut
+
+**Articulation d’interopérabilité terminée et techniquement validée pour la phase pilote contrôlée.**
+
+Les éléments disponibles montrent qu’OASSE peut conserver une politique déterministe et une autorité opérationnelle indépendantes tout en consommant les mesures runtime NeoMundi au travers d’une intégration traçable et auditable.
+
+Des réplications inter-architectures supplémentaires sont nécessaires avant toute généralisation plus large.
+
+---
+
 ## Ressources
 
 ### Oak & Sparrow Systems Enterprise
@@ -803,13 +813,3 @@ Documente :
 - [ControlTower](https://controltower.neomundi.io/welcome)
 - [Runtime Interoperability Contract](https://github.com/neomundi-io/runtime-interoperability-contract)
 - [NeoMundi AI Observatory](https://github.com/neomundi-io/neomundi-ai-observatory)
-
----
-
-## Statut
-
-**Articulation d’interopérabilité terminée et techniquement validée pour la phase pilote contrôlée.**
-
-Les éléments disponibles montrent qu’OASSE peut conserver une politique déterministe et une autorité opérationnelle indépendantes tout en consommant les mesures runtime NeoMundi au travers d’une intégration traçable et auditable.
-
-Des réplications inter-architectures supplémentaires sont nécessaires avant toute généralisation plus large.
