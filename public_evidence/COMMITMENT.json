@@ -1,0 +1,11 @@
+{
+  "purpose": "Blind cryptographic commitment to the complete private OASSE x NeoMundi evidence package. The full per-file manifest is retained privately; this single package digest lets a holder of the private package prove provenance without the package structure or filenames being published.",
+  "algorithm": "SHA-256",
+  "evidence_package_sha256": "c0aafd29ad59b4a483484fc0844c0e0d6724b1111ababcc37c5fba40d9339375",
+  "chain_tips": {
+    "60_request": "b3aeff1c7f5c10b1df6143bbf5f495d26daec900dadbfda00ca64969043b4dea",
+    "1000_request": "0daa0b4dd401e59b83c8843cff519b92121b3e2e21bbaae9358883a366dc9b67"
+  },
+  "neomundi_audit_verify_url": "https://api.neomundi.io/v1/verify/b133fa33ff167df71098d26b39b77d4393b7edf531d3fe8b57e27b784b7791a3/view",
+  "verification": "A holder of the private evidence package recomputes the per-file manifest and its digest with the retained private generator and confirms it equals evidence_package_sha256."
+}

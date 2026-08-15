@@ -352,6 +352,14 @@ The stronger claim — that the same metrological layer generalizes across very 
 
 ---
 
+## Public evidence
+
+The OASSE-approved public evidence package is available in [`public_evidence/`](./public_evidence/).
+
+It contains the sanitized evidence required to inspect and validate the published 60-request and 1,000-request controlled experiments while keeping implementation-level OASSE material outside the public repository.
+
+---
+
 ## Documentation
 
 This repository should preserve two distinct reference documents:
@@ -755,6 +763,14 @@ La contribution de recherche OASSE présente cette articulation comme **une indi
 Les éléments observés soutiennent une valeur opérationnelle complémentaire en matière de routage, traçabilité, auditabilité et qualité de preuve.
 
 La revendication plus forte — selon laquelle une même couche métrologique se généralise à des architectures externes très différentes — reste une question comparative ouverte qui nécessite d’autres articulations indépendantes et des réplications.
+
+---
+
+## Preuves publiques
+
+Le package de preuves publiques approuvé par OASSE est disponible dans [`public_evidence/`](./public_evidence/).
+
+Il contient les preuves assainies nécessaires pour examiner et valider les expériences contrôlées de 60 requêtes et de 1 000 requêtes, tout en maintenant les éléments d’implémentation internes d’OASSE hors du dépôt public.
 
 ---
 
