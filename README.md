@@ -408,6 +408,7 @@ Further cross-architectural replication is required before broader generalisatio
 ### Oak & Sparrow Systems Enterprise
 
 - [Oak & Sparrow Systems Enterprise](https://oakandsparrowsystemsenterprise.io/)
+- [OASSE × NeoMundi — external case study](https://oakandsparrow.io/#/case-studies/neomundi)
 
 ### NeoMundi
 
@@ -822,6 +823,7 @@ Des réplications inter-architectures supplémentaires sont nécessaires avant t
 ### Oak & Sparrow Systems Enterprise
 
 - [Oak & Sparrow Systems Enterprise](https://oakandsparrowsystemsenterprise.io/)
+- [OASSE × NeoMundi — étude de cas externe](https://oakandsparrow.io/#/case-studies/neomundi)
 
 ### NeoMundi
 
